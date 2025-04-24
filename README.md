@@ -2,7 +2,7 @@
 
 A sleek, responsive calculator built with **HTML, CSS, and JavaScript**. This project focuses on accessibility, performance, and clean UI — perfect for demonstrating core web development skills.
 
-**🔗 Live Demo**: [gideon-cameron.github.io/Calculator-app](https://gideon-cameron.github.io/Calculator-app/)
+**🔗 Live Demo**: [gideon-cameron.github.io/Calculator-app](https://calculator-app-xl.netlify.app/)
 
 ---
 
