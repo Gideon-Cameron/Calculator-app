@@ -1,5 +1,10 @@
 # 🧮 Calculator App
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/033dda65-e9bd-4454-a861-459a85686477/deploy-status)](https://app.netlify.com/sites/calculator-app-xl/deploys)
+![License](https://img.shields.io/github/license/Gideon-Cameron/Calculator-app)
+![Stars](https://img.shields.io/github/stars/Gideon-Cameron/Calculator-app?style=social)
+
+
 A sleek, responsive calculator built with **HTML, CSS, and JavaScript**. This project focuses on accessibility, performance, and clean UI — perfect for demonstrating core web development skills.
 
 **🔗 Live Demo**: [gideon-cameron.github.io/Calculator-app](https://calculator-app-xl.netlify.app/)
