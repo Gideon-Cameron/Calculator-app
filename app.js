@@ -1,30 +1,64 @@
-function del() {
-    let value = document.getElementById('screen').value;
-    document.getElementById('screen').value = value.substr(0,value.length-1);
-    
+const screen = document.getElementById('screen');
+const body = document.body;
+const themeToggle = document.querySelector('.theme-toggle__slider');
+const themeDot = document.querySelector('.theme-toggle__circle');
+const keysContainer = document.querySelector('.calculator__keys');
+
+const themes = ['default', 'theme-light', 'theme-dark'];
+let currentThemeIndex = 0;
+let shouldClearScreen = true;
+
+function applyTheme(index) {
+  themes.forEach(theme => body.classList.remove(theme));
+  if (index > 0) body.classList.add(themes[index]);
 }
 
-let two = document.getElementById('two');
-two.addEventListener('click', function() {
-    let body = document.querySelector('body');
-    let toggle = document.getElementById('circle');
-    body.classList.add('active1');
-    body.classList.remove('active2');
-    toggle.style.left = "36%";
-})
-let one = document.getElementById('one');
-one.addEventListener('click', function() {
-    let body = document.querySelector('body');
-    let toggle = document.getElementById('circle');
-    body.classList.remove('active1');
-    body.classList.remove('active2');
-    toggle.style.left = "0";
-})
-let three = document.getElementById('three');
-three.addEventListener('click', function() {
-    let body = document.querySelector('body');
-    let toggle = document.getElementById('circle');
-    body.classList.add('active2');
-    body.classList.remove('active1');
-    toggle.style.left = "65%";
-})
+themeToggle.addEventListener('click', () => {
+  currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+  applyTheme(currentThemeIndex);
+});
+
+function deleteLastChar() {
+  const content = screen.textContent;
+  screen.textContent = content.length > 1 ? content.slice(0, -1) : '0';
+  shouldClearScreen = screen.textContent === '0';
+}
+
+function resetDisplay() {
+  screen.textContent = '0';
+  shouldClearScreen = true;
+}
+
+function appendValue(value) {
+  if (shouldClearScreen || screen.textContent === '0') {
+    screen.textContent = value;
+    shouldClearScreen = false;
+  } else {
+    screen.textContent += value;
+  }
+}
+
+function calculateExpression() {
+  try {
+    const expression = screen.textContent.replace(/×/g, '*').replace(/÷/g, '/');
+    const result = Function('"use strict";return (' + expression + ')')();
+    screen.textContent = result;
+    shouldClearScreen = true;
+  } catch {
+    screen.textContent = 'Error';
+    shouldClearScreen = true;
+  }
+}
+
+keysContainer.addEventListener('click', (e) => {
+  const btn = e.target;
+  if (!btn.matches('button')) return;
+
+  const value = btn.dataset.value;
+  const action = btn.dataset.action;
+
+  if (value !== undefined) appendValue(value);
+  else if (action === 'delete') deleteLastChar();
+  else if (action === 'reset') resetDisplay();
+  else if (action === 'calculate') calculateExpression();
+});

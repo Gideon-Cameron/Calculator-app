@@ -1,77 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      
-        <title>Calculator App | By Gideon Cameron</title>
-      
-        <!-- ✅ SEO Essentials -->
-        <meta name="description" content="A modern, accessible, and responsive calculator built with HTML, CSS, and JavaScript. Perform basic math operations with a clean UI and fast performance." />
-        <meta name="keywords" content="calculator, JavaScript calculator, responsive calculator, web calculator, Gideon Cameron, frontend project" />
-        <meta name="author" content="Gideon Cameron" />
-      
-        <!-- ✅ Open Graph for Social Sharing -->
-        <meta property="og:title" content="Calculator App by Gideon Cameron" />
-        <meta property="og:description" content="A fast, modern calculator built with HTML, CSS, and JavaScript. Try it live!" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://gideon-cameron.github.io/Calculator-app/" />
-        <!-- Optional: add an image if available -->
-        <!-- <meta property="og:image" content="https://yourdomain.com/preview.png" /> -->
-      
-        <!-- ✅ Favicon -->
-        <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
-      
-        <!-- ✅ Styles -->
-        <link rel="stylesheet" href="style.css" />
-      </head>
-      
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculator App | By Gideon Cameron</title>
+
+  <!-- ✅ SEO Essentials -->
+  <meta name="description" content="A modern, accessible, and responsive calculator built with HTML5, CSS3, and JavaScript. Perform basic math operations with a clean UI and fast performance." />
+  <meta name="keywords" content="calculator, JavaScript calculator, responsive calculator, web calculator, Gideon Cameron, frontend project" />
+  <meta name="author" content="Gideon Cameron" />
+
+  <!-- ✅ Open Graph for Social Sharing -->
+  <meta property="og:title" content="Calculator App by Gideon Cameron" />
+  <meta property="og:description" content="A fast, modern calculator built with HTML5, CSS3, and JavaScript. Try it live!" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://gideon-cameron.github.io/Calculator-app/" />
+
+  <!-- ✅ Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+
+  <!-- ✅ Styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
 <body>
-    <div class="container">
-        <div class="title">
-            <div class="toggle">
-                <h3>calc</h3>
-                <div class="right">
-                    <p id="one">1</p>
-                    <p id="two">2</p>
-                    <p id="three">3</p>
-                </div>
-            </div>
-            <div class="control">
-            <p>Theme</p> 
-            <div class="box">
-                <div id="circle"></div>
-            </div>
-            </div>
+  <main role="application">
+    <section class="calculator">
+      <header class="calculator__header">
+        <h1 class="calculator__title">calc</h1>
+        <div class="theme-toggle" aria-label="Theme toggle">
+          <span class="theme-toggle__label">Theme</span>
+          <div class="theme-toggle__slider" tabindex="0" role="button" aria-label="Toggle theme">
+            <div class="theme-toggle__circle"></div>
+          </div>
         </div>
-        <div class="screen">
-            <form name="calc">
-             <input type="text" name="text" readonly id="screen">
-             </form>
-        </div>
-        <div class="cal-body">
-            <div class="btn">
-                <button class="num" onclick="document.calc.text.value+='7'">7</button>
-                <button class="num" onclick="document.calc.text.value+='8'">8</button>
-                <button class="num" onclick="document.calc.text.value+='9'">9</button>
-                <button class="del" onclick="del()">DEL</button>
-                <button class="num" onclick="document.calc.text.value+='4'">4</button>
-                <button class="num" onclick="document.calc.text.value+='5'">5</button>
-                <button class="num" onclick="document.calc.text.value+='6'">6</button>
-                <button onclick="document.calc.text.value+='+'">+</button>
-                <button class="num" onclick="document.calc.text.value+='1'">1</button>
-                <button class="num" onclick="document.calc.text.value+='2'">2</button>
-                <button class="num" onclick="document.calc.text.value+='3'">3</button>
-                <button onclick="document.calc.text.value+='-'">-</button>
-                <button onclick="document.calc.text.value+='.'">.</button>
-                <button class="num" onclick="document.calc.text.value+='0'">0</button>
-                <button onclick="document.calc.text.value+='/'">/</button>
-                <button onclick="document.calc.text.value+='*'">X</button>
-                <button class="reset" onclick="document.calc.text.value=''">Reaset</button>
-                <button class="equal" onclick="document.calc.text.value= eval(calc.text.value)">=</button>
-            </div>
-        </div>
-    </div>
-    <script src="app.js"></script>
+      </header>
+
+      <section class="calculator__screen" id="screen" role="textbox" aria-live="polite" aria-label="Calculator display">
+        0
+      </section>
+
+      <section class="calculator__keys">
+        <button class="key" data-value="7" aria-label="7">7</button>
+        <button class="key" data-value="8" aria-label="8">8</button>
+        <button class="key" data-value="9" aria-label="9">9</button>
+        <button class="key key--action" data-action="delete" aria-label="Delete">DEL</button>
+
+        <button class="key" data-value="4" aria-label="4">4</button>
+        <button class="key" data-value="5" aria-label="5">5</button>
+        <button class="key" data-value="6" aria-label="6">6</button>
+        <button class="key" data-value="+" aria-label="Add">+</button>
+
+        <button class="key" data-value="1" aria-label="1">1</button>
+        <button class="key" data-value="2" aria-label="2">2</button>
+        <button class="key" data-value="3" aria-label="3">3</button>
+        <button class="key" data-value="-" aria-label="Subtract">−</button>
+
+        <button class="key" data-value="." aria-label="Decimal">.</button>
+        <button class="key" data-value="0" aria-label="0">0</button>
+        <button class="key" data-value="/" aria-label="Divide">÷</button>
+        <button class="key" data-value="*" aria-label="Multiply">×</button>
+
+        <button class="key key--action key--reset" data-action="reset" aria-label="Reset">Reset</button>
+        <button class="key key--action key--equal" data-action="calculate" aria-label="Equals">=</button>
+      </section>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
 </body>
 </html>
